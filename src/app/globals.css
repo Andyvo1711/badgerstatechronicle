@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-navy: #12304a;
+  --color-lake: #2e627d;
+  --color-forest: #315b4c;
+  --color-brick: #a5533d;
+  --color-copper: #b8734b;
+  --color-platinum: #d7dbde;
+  --color-ivory: #f7f4ed;
+  --color-charcoal: #20262b;
+  --color-muted: #687078;
+}
+
+@theme inline {
+  --font-headline: var(--font-playfair);
+  --font-body: var(--font-source-sans);
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+a {
+  text-decoration-color: transparent;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-lake);
+  outline-offset: 2px;
+}

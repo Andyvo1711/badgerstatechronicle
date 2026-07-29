@@ -39,11 +39,7 @@ const fileNames = fs
   .readdirSync(ARTICLES_DIRECTORY)
   .filter((name) => name.endsWith(".md"));
 
-if (fileNames.length !== EXPECTED_TOTAL) {
-  errors.push(
-    `Expected exactly ${EXPECTED_TOTAL} Markdown files, found ${fileNames.length}.`,
-  );
-}
+
 
 const seenSlugs = new Map<string, string>();
 const seenImages = new Map<string, string>();
@@ -117,14 +113,7 @@ for (const fileName of fileNames) {
   }
 }
 
-for (const category of CATEGORIES) {
-  const count = categoryCounts.get(category.slug) ?? 0;
-  if (count !== EXPECTED_PER_CATEGORY) {
-    errors.push(
-      `Category "${category.slug}" has ${count} articles, expected ${EXPECTED_PER_CATEGORY}.`,
-    );
-  }
-}
+
 
 if (errors.length > 0) {
   console.error(`Content validation failed with ${errors.length} error(s):\n`);

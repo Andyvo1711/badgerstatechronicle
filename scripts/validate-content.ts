@@ -4,8 +4,8 @@ import matter from "gray-matter";
 import { CATEGORIES, isCategorySlug } from "../src/lib/categories";
 
 const ARTICLES_DIRECTORY = path.join(process.cwd(), "content", "articles");
-const EXPECTED_TOTAL = 75;
-const EXPECTED_PER_CATEGORY = 15;
+const EXPECTED_TOTAL = 100;
+const EXPECTED_PER_CATEGORY = 20;
 const REQUIRED_FIELDS = [
   "title",
   "slug",

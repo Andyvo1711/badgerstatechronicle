@@ -5,7 +5,6 @@ import { CATEGORIES, isCategorySlug } from "../src/lib/categories";
 
 const ARTICLES_DIRECTORY = path.join(process.cwd(), "content", "articles");
 
-
 const REQUIRED_FIELDS = [
   "title",
   "slug",
@@ -21,6 +20,7 @@ const errors: string[] = [];
 
 function isValidImageUrl(url: string): boolean {
   return (
+    /^\/images\//.test(url) ||
     /^https:\/\/images\.unsplash\.com\//.test(url) ||
     /^https:\/\/images\.pexels\.com\//.test(url)
   );
@@ -38,8 +38,6 @@ if (!fs.existsSync(ARTICLES_DIRECTORY)) {
 const fileNames = fs
   .readdirSync(ARTICLES_DIRECTORY)
   .filter((name) => name.endsWith(".md"));
-
-
 
 const seenSlugs = new Map<string, string>();
 const seenImages = new Map<string, string>();
@@ -92,9 +90,9 @@ for (const fileName of fileNames) {
 
   if (typeof data.coverImage !== "string" || !isValidImageUrl(data.coverImage)) {
     errors.push(
-      `${fileName}: "coverImage" must be a valid Unsplash or Pexels URL, got "${data.coverImage}".`,
+      `${fileName}: "coverImage" must be a local /images/ path or a valid Unsplash or Pexels URL, got "${data.coverImage}".`,
     );
-  } else {
+  } else if (!/^\/images\//.test(data.coverImage)) {
     if (seenImages.has(data.coverImage)) {
       errors.push(
         `${fileName}: duplicate coverImage also used by "${seenImages.get(data.coverImage)}".`,
@@ -112,8 +110,6 @@ for (const fileName of fileNames) {
     errors.push(`${fileName}: "featured" must be a boolean.`);
   }
 }
-
-
 
 if (errors.length > 0) {
   console.error(`Content validation failed with ${errors.length} error(s):\n`);

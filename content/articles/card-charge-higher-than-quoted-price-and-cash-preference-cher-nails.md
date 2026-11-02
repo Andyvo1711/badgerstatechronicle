@@ -4,7 +4,7 @@ slug: "card-charge-higher-than-quoted-price-and-cash-preference-cher-nails"
 excerpt: "A customer described being charged more on her card than the price quoted for a gel acrylic set at Cher Nails. A look at how consistent pricing and payment options protect trust at the register."
 category: "beauty-wellness"
 date: "2025-11-05"
-coverImage: "https://images.pexels.com/photos/15149202/pexels-photo-15149202.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop"
+coverImage: "https://images.pexels.com/photos/15149202/pexels-photo-15149202.jpeg?auto=compress&cs=tinysrgb&w=1600"
 featured: false
 imageCredit: "Photo: Pexels"
 ---
